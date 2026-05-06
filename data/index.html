@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MoveLite Dashboard</title>
+    <style>
+        body { font-family: sans-serif; display: flex; margin: 0; padding: 20px; background: #1a1a1a; color: #fff; }
+        .panel { background: #2a2a2a; padding: 20px; border-radius: 8px; margin: 10px; }
+        canvas { background: #000; border: 1px solid #444; cursor: crosshair; }
+        button { background: #0066cc; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0088ff; }
+        #joystick { width: 150px; height: 150px; background: #333; border-radius: 50%; position: relative; margin: 20px auto; touch-action: none; }
+        #stick { width: 40px; height: 40px; background: #666; border-radius: 50%; position: absolute; top: 55px; left: 55px; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h2>Map & Navigation</h2>
+        <canvas id="mapCanvas" width="400" height="400"></canvas>
+        <p>Click on map to set goal.</p>
+    </div>
+    
+    <div class="panel">
+        <h2>Controls</h2>
+        <p>Mode: <span id="mode">IDLE</span></p>
+        <button onclick="sendCmd('start_mapping')">Start Mapping</button>
+        <button onclick="sendCmd('stop_mapping')">Stop Mapping</button>
+        <button onclick="sendCmd('reset')">Reset</button>
+        
+        <div id="joystick">
+            <div id="stick"></div>
+        </div>
+        
+        <h3>Telemetry</h3>
+        <p>X: <span id="valX">0.00</span> m</p>
+        <p>Y: <span id="valY">0.00</span> m</p>
+        <p>Theta: <span id="valT">0.00</span> rad</p>
+        <p>Front ToF: <span id="valF">0.00</span> m</p>
+        <p>Rear ToF: <span id="valR">0.00</span> m</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
